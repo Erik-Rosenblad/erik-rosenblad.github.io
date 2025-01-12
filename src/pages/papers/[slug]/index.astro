@@ -1,0 +1,29 @@
+---
+// Astro
+import { type CollectionEntry, getCollection } from "astro:content";
+
+// Layouts
+import Post from "@layouts/Post.astro";
+
+// Interfaces
+export interface Props {
+    paper: CollectionEntry<"blog">;
+}
+
+// Constants
+const { paper } = Astro.props;
+
+// Functions
+export async function getStaticPaths() {
+    const papers = await getCollection("blog", ({ data }) => !data.new);
+
+    const paperResult = papers.map(paper => ({
+        params: { slug: paper.slug },
+        props: { paper },
+    }));
+
+    return paperResult;
+}
+---
+
+<Post post={paper}/>
