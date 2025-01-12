@@ -1,0 +1,29 @@
+---
+// Astro
+import { type CollectionEntry, getCollection } from "astro:content";
+
+// Layouts
+import Post from "@layouts/Post.astro";
+
+// Interfaces
+export interface Props {
+    snew: CollectionEntry<"blog">;
+}
+
+// Constants
+const { snew } = Astro.props;
+
+// Functions
+export async function getStaticPaths() {
+    const snews = await getCollection("blog", ({ data }) => data.new);
+
+    const snewResult = snews.map(snew => ({
+        params: { slug: snew.slug },
+        props: { snew },
+    }));
+
+    return snewResult;
+}
+---
+
+<Post post={snew}/>
