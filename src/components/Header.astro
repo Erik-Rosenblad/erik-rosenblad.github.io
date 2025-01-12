@@ -1,0 +1,28 @@
+---
+// Config
+import { SITE } from "@config";
+---
+
+<header class="flex justify-between mx-auto">
+    <nav class="flex items-center">
+        <a class="text-base font-semibold" href="/">
+            <span class="hidden sm:block">{SITE.title} 🌹</span>
+            <span class="sm:hidden">🌹</span>
+        </a>
+    </nav>
+
+    <nav class="flex items-center text-sm space-x-4">
+        <a href="/news">~/news</a>
+        <a href="/papers">~/papers</a>
+        <a href="/search">~/search</a>
+        <a href="/about">~/about</a>
+    </nav>
+</header>
+
+<style>
+    header {
+        width: 90%;
+        max-width: 55rem;
+        margin: 3rem;
+    }
+</style>
