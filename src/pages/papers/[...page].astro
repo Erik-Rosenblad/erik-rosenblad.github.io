@@ -1,0 +1,70 @@
+---
+// Astro
+import { getCollection } from "astro:content";
+import { type GetStaticPaths } from "astro";
+
+// Components
+import Card from "@components/Card";
+
+// Layouts
+import Layout from "@layouts/Layout.astro";
+
+// Utils
+import getSortedPosts from "@utils/getSortedPosts";
+
+// Config
+import { SITE } from "@config";
+
+// Variables
+const { page } = Astro.props;
+
+// Functions
+export const getStaticPaths = (async ({ paginate }) => {
+    const papers = await getCollection("blog", ({ data }) => !data.new);
+    return paginate(getSortedPosts(papers), { pageSize: SITE.page_size });
+}) satisfies GetStaticPaths;
+---
+
+<Layout title="Papers">
+    <main>
+        <div class="flex items-center space-x-2 pb-4">
+            <h2 class="text-2xl font-semibold">Papers</h2>
+
+            <a href="/papers/rss.xml" target="_blank">
+                <img
+                    class="w-5 h-5"
+                    src="/assets/images/rss-icon.svg"
+                    alt="RSS Feed"
+                />
+            </a>
+        </div>
+
+        <div class="space-y-6">
+            {page.data.map(({ data, slug }) => (
+                <Card slug={slug} frontmatter={data}/>
+            ))}
+        </div>
+
+        <hr class="border-dashed my-7"/>
+
+        {page.lastPage > 1 && (
+            <div class="flex text-sm justify-center pr-2">
+                <a
+                    href={page.url.prev as string}
+                    class={`${page.url.prev ? "" : "disabled"}`}
+                >
+                    Previous
+                </a>
+
+                <span class="px-3">{page.currentPage} / {page.lastPage}</span>
+
+                <a
+                    href={page.url.next as string}
+                    class={`${page.url.next ? "" : "disabled"}`}
+                >
+                    Next
+                </a>
+            </div>
+        )}
+    </main>
+</Layout>
