@@ -1,0 +1,107 @@
+---
+// Astro
+import { getCollection } from "astro:content";
+
+// Components
+import Card from "@components/Card";
+import LinkButton from "@components/LinkButton.astro";
+
+// Layouts
+import Layout from "@layouts/Layout.astro";
+
+// Utils
+import getSortedPosts from "@utils/getSortedPosts";
+
+// Constants
+const posts = await getCollection("blog");
+const sortedPosts = getSortedPosts(posts);
+const papers = sortedPosts.filter(({ data }) => !data.new).slice(0, 3);
+const news = sortedPosts.filter(({ data }) => data.new).slice(0, 3);
+---
+
+<Layout title="Index">
+    <main>
+        <h2 class="text-2xl font-semibold pb-4">Welcome</h2>
+
+        <p class="text-sm leading-6">
+            Welcome to my personal website. I write papers about:
+
+            <LinkButton
+                text="Computer Architecture"
+                href="https://en.wikipedia.org/wiki/Computer_architecture"
+            />,
+
+            <LinkButton
+                text="Computer Network"
+                href="https://en.wikipedia.org/wiki/Computer_network"
+            />,
+
+            <LinkButton
+                text="Cybersecurity"
+                href="https://en.wikipedia.org/wiki/Computer_security"
+            />
+
+            and
+
+            <LinkButton
+                text="Digital Privacy"
+                href="https://en.wikipedia.org/wiki/Digital_privacy"
+            />.
+
+            For more information, see
+
+            <LinkButton
+                text="about"
+                href="/about"
+            />.
+        </p>
+
+        <hr class="border-dashed my-7"/>
+
+        {papers.length > 0 && (
+            <div class="flex items-center space-x-2">
+                <a class="text-base" href="/papers">~/papers</a>
+
+                <a href="/papers/rss.xml" target="_blank">
+                    <img
+                        class="w-3 h-3"
+                        src="/assets/images/rss-icon.svg"
+                        alt="RSS Feed"
+                    />
+                </a>
+            </div>
+
+            <h2 class="text-xs pl-2 pb-5">Recent posts</h2>
+
+            <div class="pl-6 space-y-6">
+                {papers.map(({ data, slug }) => (
+                    <Card slug={slug} frontmatter={data}/>
+                ))}
+            </div>
+
+            <hr class="border-dashed my-7"/>
+        )}
+
+        {news.length > 0 && (
+            <div class="flex items-center space-x-2">
+                <a class="text-base" href="/news">~/news</a>
+
+                <a href="/news/rss.xml" target="_blank">
+                    <img
+                        class="w-3 h-3"
+                        src="/assets/images/rss-icon.svg"
+                        alt="RSS Feed"
+                    />
+                </a>
+            </div>
+
+            <h2 class="text-xs pl-2 pb-5">Recent posts</h2>
+
+            <div class="pl-6 space-y-6">
+                {news.map(({ data, slug }) => (
+                    <Card slug={slug} frontmatter={data}/>
+                ))}
+            </div>
+        )}
+    </main>
+</Layout>
