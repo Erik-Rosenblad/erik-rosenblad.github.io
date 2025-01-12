@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env*
+
+# Logs
+npm-debug.log*
+
+# Astro directory
+.astro
+
+# Build directory
+dist/
