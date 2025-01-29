@@ -7,23 +7,23 @@ import Post from "@layouts/Post.astro";
 
 // Interfaces
 export interface Props {
-    snew: CollectionEntry<"blog">;
+    _new: CollectionEntry<"blog">;
 }
 
 // Constants
-const { snew } = Astro.props;
+const { _new } = Astro.props;
 
 // Functions
 export async function getStaticPaths() {
-    const snews = await getCollection("blog", ({ data }) => data.new);
+    const _news = await getCollection("blog", ({ data }) => data.new);
 
-    const snewResult = snews.map(snew => ({
-        params: { slug: snew.slug },
-        props: { snew },
+    const _newResult = _news.map(_new => ({
+        params: { slug: _new.slug },
+        props: { _new },
     }));
 
-    return snewResult;
+    return _newResult;
 }
 ---
 
-<Post post={snew}/>
+<Post post={_new}/>

@@ -61,9 +61,9 @@ module.exports = {
             },
 
             fontFamily: {
-                sans: ["AdelleMono-Semibold"],
-                serif: ["AdelleMono-Semibold"],
-                mono: ["AdelleMono-Semibold"],
+                sans: ["AdelleMono-Regular"],
+                serif: ["AdelleMono-Regular"],
+                mono: ["AdelleMono-Regular"],
             },
 
             typography: {

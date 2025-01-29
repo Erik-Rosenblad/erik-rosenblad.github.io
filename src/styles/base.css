@@ -4,18 +4,18 @@
 
 @layer base {
     @font-face {
-        font-family: "AdelleMono-Semibold";
-        src: url("/src/assets/fonts/AdelleMono-Semibold.ttf") format("opentype");
+        font-family: "AdelleMono-Regular";
+        src: url("/assets/fonts/AdelleMono-Regular.ttf") format("opentype");
     }
 
     html {
         --color-fill: 20, 20, 20;
         --color-accent: 83, 116, 194;
-        --color-text-base: 200, 200, 200;
+        --color-text-base: 210, 210, 210;
     }
 
     body {
-        @apply flex flex-col min-h-screen text-skin-base bg-skin-fill;
+        @apply flex flex-col text-skin-base bg-skin-fill min-h-screen;
     }
 
     main {
@@ -23,19 +23,17 @@
         width: 90%;
     }
 
-    svg {
-        display: inline !important;
+    p, li {
+        font-size: 0.906rem;
     }
 
-    a:hover {
-        @apply hover:!text-skin-accent;
+    a {
+        @apply font-bold hover:!text-skin-accent;
     }
 
     .prose {
         @apply
             /* Text size */
-            prose-p:text-sm
-            prose-li:text-sm
             prose-blockquote:text-sm
 
             /* Text color */
@@ -48,7 +46,6 @@
             prose-headings:!text-skin-base
 
             /* Text accent color */
-            hover:prose-a:text-skin-accent
             prose-li:marker:!text-skin-accent
             prose-blockquote:!border-l-skin-accent
 
@@ -57,7 +54,6 @@
 
             /* Heading */
             prose-headings:pb-1
-            prose-headings:!mb-3
 
             /* Paragraph */
             prose-p:leading-6
@@ -70,22 +66,30 @@
             prose-code:before:!content-none
 
             /* Blockquote */
-            prose-blockquote:opacity-80
+            prose-blockquote:opacity-80;
     }
 
     .prose kbd {
-        @apply text-skin-base
+        @apply text-skin-base;
     }
 
     .prose thead {
-        @apply text-skin-base
+        @apply text-skin-base;
     }
 
     .prose tbody {
-        @apply text-skin-base
+        @apply text-skin-base;
     }
 
-    .prose details {
+    .prose summary {
         @apply text-skin-base cursor-pointer;
+    }
+
+    .prose strong a {
+        @apply font-bold;
+    }
+
+    .prose #footnote-label {
+        @apply text-xl;
     }
 }

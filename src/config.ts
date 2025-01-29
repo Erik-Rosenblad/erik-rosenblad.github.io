@@ -2,6 +2,7 @@ import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
     title: "Erik Rosenblad",
+    author: "Erik Rosenblad",
     website: "https://erik-rosenblad.github.io",
     description: "Personal website",
     page_size: 6,

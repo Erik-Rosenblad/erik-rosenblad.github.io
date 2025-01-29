@@ -12,6 +12,7 @@ import { SITE } from "@config";
 // Interfaces
 export interface Props {
     title: string,
+    author: string,
     //website?: string,
     description?: string,
     pubDate?: Date;
@@ -21,6 +22,7 @@ export interface Props {
 // Constants
 const {
     title = SITE.title,
+    author = SITE.author,
     //website = SITE.website,
     description = SITE.description,
     pubDate,
@@ -38,7 +40,7 @@ const {
         <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg"/>
         <title>{title} | {SITE.title}</title>
         <meta name="title" content={title}/>
-        <meta name="author" content={title}/>
+        <meta name="author" content={author}/>
         <meta name="description" content={description}/>
         <link rel="sitemap" href="/sitemap-index.xml"/>
 
@@ -67,6 +69,9 @@ const {
 
     links.forEach(link => {
         if (link instanceof HTMLAnchorElement) {
+            // Make Astro ignore elements without accessibility
+            link.setAttribute("aria-label", link.innerHTML);
+
             if (!link.href.startsWith(origin)) {
                 link.setAttribute("target", "_blank");
                 link.setAttribute("rel", "noopener noreferrer");

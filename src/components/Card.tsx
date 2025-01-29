@@ -1,6 +1,9 @@
 // Astro
 import type { CollectionEntry } from "astro:content";
 
+// Styles
+import "@styles/base.css";
+
 // Interfaces
 export interface Props {
     slug: string;
@@ -14,16 +17,15 @@ export default function Card({ slug, frontmatter }: Props) {
 
     return (
         <div className="space-y-0.5">
-            <a
-                className="text-sm text-skin-accent hover:underline"
-                href={href}
-            >
-                {title}
-            </a>
+            <p className="text-mid">
+                <a className="text-skin-accent hover:underline" href={href}>
+                    {title}
+                </a>
+            </p>
 
-            <p className="text-sm">{description}</p>
-            <p className="text-xs  pt-1">
-                {pubDate.toLocaleDateString()} - {minRead} minutes read
+            <p className="text-mid">{description}</p>
+            <p className="text-sm pt-1">
+                {pubDate.toLocaleDateString()} - ~{minRead} minutes read
             </p>
         </div>
     );
