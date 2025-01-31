@@ -64,6 +64,7 @@ const {
 </html>
 
 <script>
+    const heads = document.querySelectorAll(".prose h3, .prose h4, .prose h5, .prose h6");
     const links = document.querySelectorAll(".prose a");
     const origin = window.location.origin;
 
@@ -77,5 +78,12 @@ const {
                 link.setAttribute("rel", "noopener noreferrer");
             }
         }
+    });
+
+    heads.forEach(heading => {
+        heading.addEventListener("click", () => {
+            const headingName = heading.textContent.replaceAll(" ", "-").toLowerCase();
+            window.location.hash = headingName;
+        });
     });
 </script>

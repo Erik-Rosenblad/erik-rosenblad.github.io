@@ -19,16 +19,17 @@
     }
 
     main {
-        @apply break-words max-w-3xl m-auto;
+        @apply break-normal max-w-3xl m-auto;
         width: 90%;
-    }
-
-    p, li {
-        font-size: 0.906rem;
     }
 
     a {
         @apply font-bold hover:!text-skin-accent;
+    }
+
+    p, li {
+        font-size: 0.906rem;
+        line-height: 1.6rem;
     }
 
     .prose {
@@ -90,6 +91,10 @@
     }
 
     .prose #footnote-label {
-        @apply text-xl;
+        @apply text-base;
+    }
+
+    .prose h3, .prose h4, .prose h5, .prose h6 {
+        @apply hover:underline hover:!text-skin-accent cursor-pointer;
     }
 }
