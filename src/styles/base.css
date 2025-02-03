@@ -9,7 +9,7 @@
     }
 
     html {
-        --color-fill: 20, 20, 20;
+        --color-fill: 18, 18, 18;
         --color-accent: 109, 168, 238;
         --color-text-base: 210, 210, 210;
     }
@@ -19,17 +19,21 @@
     }
 
     main {
-        @apply break-normal max-w-3xl m-auto;
+        @apply break-normal m-auto;
         width: 90%;
+        max-width: 53rem;
     }
 
     a {
         @apply font-bold hover:!text-skin-accent;
     }
 
+    p {
+        @apply leading-7;
+    }
+
     p, li {
-        font-size: 0.906rem;
-        line-height: 1.6rem;
+        @apply text-[0.969rem];
     }
 
     .prose {
@@ -55,9 +59,6 @@
 
             /* Heading */
             prose-headings:pb-1
-
-            /* Paragraph */
-            prose-p:leading-6
 
             /* Code Line */
             prose-code:px-1
