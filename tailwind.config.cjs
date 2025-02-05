@@ -61,9 +61,9 @@ module.exports = {
             },
 
             fontFamily: {
-                sans: ["LiberationMono"],
-                serif: ["LiberationMono"],
-                mono: ["LiberationMono"],
+                sans: ["Cascadia"],
+                serif: ["Cascadia"],
+                mono: ["Cascadia"],
             },
 
             typography: {

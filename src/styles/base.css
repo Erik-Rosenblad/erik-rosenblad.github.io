@@ -4,14 +4,14 @@
 
 @layer base {
     @font-face {
-        font-family: "LiberationMono";
-        src: url("/assets/fonts/LiberationMono-Regular.ttf") format("opentype");
+        font-family: "Cascadia";
+        src: url("/assets/fonts/Cascadia.ttf") format("opentype");
     }
 
     html {
         --color-fill: 18, 18, 18;
         --color-accent: 109, 168, 238;
-        --color-text-base: 190, 190, 190;
+        --color-text-base: 180, 180, 180;
     }
 
     body {
@@ -90,7 +90,7 @@
     }
 
     .prose strong, .prose strong a {
-        @apply text-white/80;
+        @apply text-white/75;
     }
 
     .prose #footnote-label {
