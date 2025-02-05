@@ -61,9 +61,9 @@ module.exports = {
             },
 
             fontFamily: {
-                sans: ["AdelleMono-Regular"],
-                serif: ["AdelleMono-Regular"],
-                mono: ["AdelleMono-Regular"],
+                sans: ["LiberationMono"],
+                serif: ["LiberationMono"],
+                mono: ["LiberationMono"],
             },
 
             typography: {

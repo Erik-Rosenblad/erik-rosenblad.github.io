@@ -25,7 +25,7 @@ export default function Card({ slug, frontmatter }: Props) {
 
             <p className="text-mid">{description}</p>
             <p className="text-sm pt-1">
-                {pubDate.toLocaleDateString()} :: ~{minRead} minutes read
+                {pubDate.toLocaleDateString()} | ~{minRead} minutes read
             </p>
         </div>
     );

@@ -18,6 +18,7 @@ const {
     title,
     minRead,
     pubDate,
+    modDate,
     description,
     canonicalURL,
 } = post.data;
@@ -26,6 +27,7 @@ const layoutProps = {
     title: `${title}`,
     minRead,
     pubDate,
+    modDate,
     description,
     canonicalURL,
 };
@@ -35,8 +37,14 @@ const layoutProps = {
     <main>
         <h2 class="text-2xl font-semibold">{title}</h2>
 
-        <p class="font-semibold pt-1 pb-4">
-            {pubDate.toLocaleDateString()} :: ~{minRead} minutes read
+        <p class="text-skin-base/90 text-sm pt-1 pb-4">
+            Published on: {pubDate.toLocaleDateString()}</br>
+
+            {modDate && (
+                <span>Updated on: {modDate.toLocaleDateString()}</span></br>
+            )}
+
+            ~{minRead} minutes read
         </p>
 
         <div class="prose max-w-full">

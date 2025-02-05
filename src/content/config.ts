@@ -16,6 +16,7 @@ const blog = defineCollection({
         title: z.string(),
         minRead: z.number(),
         pubDate: z.date(),
+        modDate: z.date().optional(),
         description: z.string(),
         canonicalURL: z.string().optional(),
     }),

@@ -4,14 +4,14 @@
 
 @layer base {
     @font-face {
-        font-family: "AdelleMono-Regular";
-        src: url("/assets/fonts/AdelleMono-Regular.ttf") format("opentype");
+        font-family: "LiberationMono";
+        src: url("/assets/fonts/LiberationMono-Regular.ttf") format("opentype");
     }
 
     html {
         --color-fill: 18, 18, 18;
         --color-accent: 109, 168, 238;
-        --color-text-base: 210, 210, 210;
+        --color-text-base: 190, 190, 190;
     }
 
     body {
@@ -25,7 +25,7 @@
     }
 
     a {
-        @apply font-bold hover:!text-skin-accent;
+        @apply hover:!text-skin-accent;
     }
 
     p {
@@ -43,11 +43,9 @@
 
             /* Text color */
             prose-p:!text-skin-base
-            prose-a:!text-skin-base
             prose-ol:!text-skin-base
             prose-ul:!text-skin-base
             prose-code:!text-skin-base/90
-            prose-strong:!text-skin-base
             prose-headings:!text-skin-base
 
             /* Text accent color */
@@ -71,6 +69,10 @@
             prose-blockquote:opacity-80;
     }
 
+    .prose a {
+        @apply text-skin-base;
+    }
+
     .prose kbd {
         @apply text-skin-base;
     }
@@ -87,8 +89,8 @@
         @apply text-skin-base cursor-pointer;
     }
 
-    .prose strong a {
-        @apply font-bold;
+    .prose strong, .prose strong a {
+        @apply text-white/80;
     }
 
     .prose #footnote-label {
